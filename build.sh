@@ -148,7 +148,6 @@ _package() {
     pushd ${SHELL_DIR}/src
     tar -czf ../target/dist/${REPONAME}-${VERSION}.tar.gz *
     popd
-
 }
 
 _publish() {
