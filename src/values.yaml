@@ -1,0 +1,94 @@
+replicaCount: 1
+
+profile: default
+
+namespace: default
+
+configmap:
+  enabled: false
+
+secret:
+  enabled: false
+
+image:
+  repository: acme
+  tag: latest
+  pullPolicy: Always
+
+labels: {}
+annotations: {}
+
+pod:
+  labels: {}
+  annotations: {}
+
+service:
+  type: ClusterIP
+  externalPort: 80
+  internalPort: 8080
+  annotations: {}
+  labels: {}
+
+ingress:
+  enabled: false
+  hosts: {}
+    # - acme.opsnow.com
+  annotations:
+    kubernetes.io/ingress.class: nginx
+    # nginx.ingress.kubernetes.io/force-ssl-redirect: "true"
+  labels: {}
+
+autoscaling:
+  enabled: false
+  min: 1
+  max: 5
+  cpu: 80
+  mem: 80
+
+resources: {}
+  # requests:
+  #   cpu: 500m
+  #   memory: 1024Mi
+  # limits:
+  #   cpu: 600m
+  #   memory: 1252Mi
+
+readinessProbe: {}
+  # httpGet:
+  #   path: /
+  #   port: 8080
+  # initialDelaySeconds: 30
+  # periodSeconds: 10
+  # failureThreshold: 3
+
+livenessProbe: {}
+  # httpGet:
+  #   path: /
+  #   port: 8080
+  # initialDelaySeconds: 30
+  # periodSeconds: 10
+  # failureThreshold: 3
+
+# livenessProbe:
+#   exec:
+#     command:
+#     - cat
+#     - /tmp/healthy
+#   initialDelaySeconds: 15
+#   periodSeconds: 10
+# livenessProbe:
+#   tcpSocket:
+#     port: 8080
+#   initialDelaySeconds: 15
+#   periodSeconds: 10
+
+# hostNetwork: true
+# dnsPolicy: Default
+
+nodeSelector: {}
+
+tolerations: []
+
+affinity: {}
+
+pdb: {}
