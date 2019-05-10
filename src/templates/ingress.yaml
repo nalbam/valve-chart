@@ -20,6 +20,15 @@ metadata:
 {{- end }}
 spec:
   rules:
+{{ if and .Values.ingress.subdomain .Values.ingress.basedomain }}
+  - host: {{ .Values.ingress.subdomain }}.{{ .Values.ingress.basedomain }}
+    http:
+      paths:
+      - path: /
+        backend:
+          serviceName: {{ $fullName }}
+          servicePort: {{ $servicePort }}
+{{ end }}
 {{ range .Values.ingress.hosts }}
   - host: {{ . }}
     http:
