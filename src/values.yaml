@@ -92,6 +92,10 @@ tolerations: []
 
 affinity: {}
 
+env: {}
+  # - name: MESSAGE
+  #   value: "hello world"
+
 configmap:
   enabled: false
   data: {}
