@@ -29,8 +29,8 @@ service:
 
 ingress:
   enabled: false
-  subdomain: ""
-  basedomain: ""
+  subdomain: acme
+  basedomain: 127.0.0.1.nip.io
   hosts: {}
   # hosts:
   #   - acme.opsnow.com
@@ -48,17 +48,17 @@ autoscaling:
 
 resources: {}
   # requests:
-  #   cpu: 250m
-  #   memory: 1024Mi
+  #   cpu: 100m
+  #   memory: 128Mi
   # limits:
-  #   cpu: 300m
-  #   memory: 1252Mi
+  #   cpu: 120m
+  #   memory: 153Mi
 
 readinessProbe: {}
   # httpGet:
   #   path: /
   #   port: 8080
-  # initialDelaySeconds: 30
+  # initialDelaySeconds: 3
   # periodSeconds: 10
   # failureThreshold: 3
 
@@ -66,7 +66,7 @@ livenessProbe: {}
   # httpGet:
   #   path: /
   #   port: 8080
-  # initialDelaySeconds: 30
+  # initialDelaySeconds: 3
   # periodSeconds: 10
   # failureThreshold: 3
 
@@ -75,12 +75,12 @@ livenessProbe: {}
 #     command:
 #     - cat
 #     - /tmp/healthy
-#   initialDelaySeconds: 15
+#   initialDelaySeconds: 3
 #   periodSeconds: 10
 # livenessProbe:
 #   tcpSocket:
 #     port: 8080
-#   initialDelaySeconds: 15
+#   initialDelaySeconds: 3
 #   periodSeconds: 10
 
 # hostNetwork: true
@@ -94,8 +94,10 @@ affinity: {}
 
 configmap:
   enabled: false
-  hash: ""
+  data: {}
+    # MESSAGE: "hello world"
 
 secret:
   enabled: false
-  hash: ""
+  data: {}
+    # SECRET: c2VjcmV0IHdvcmxkCg==
