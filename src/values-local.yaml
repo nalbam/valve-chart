@@ -1,0 +1,39 @@
+fullnameOverride: acme
+
+replicaCount: 1
+
+image:
+  repository: acme
+  tag: latest
+  pullPolicy: IfNotPresent
+
+service:
+  type: ClusterIP
+  externalPort: 80
+  internalPort: 8080
+  annotations: {}
+  labels: {}
+
+ingress:
+  enabled: true
+  subdomain: acme
+  basedomain: 127.0.0.1.nip.io
+  annotations:
+    kubernetes.io/ingress.class: nginx
+
+autoscaling:
+  enabled: false
+
+env:
+  - name: MESSAGE
+    value: "hello world"
+
+configmap:
+  enabled: true
+  data:
+    MESSAGE: "hello local world"
+
+secret:
+  enabled: true
+  data:
+    SECRET: "c2VjcmV0IHdvcmxkCg=="
