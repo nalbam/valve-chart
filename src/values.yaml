@@ -9,7 +9,7 @@ namespace: default
 image:
   repository: acme
   tag: latest
-  pullPolicy: Always
+  pullPolicy: IfNotPresent
 
 labels: {}
 annotations: {}
